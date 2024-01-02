@@ -32,7 +32,9 @@ This document provides a detailed metadata table for the components of the UK Po
 | **Postcode**     | The full postal code used for sorting and delivering mail. Combines both the Outward and Inward Codes. | `[Area][District] [Postal Sector][Unit]` | `SW1V 2AB`     |
 | **Country**      | Indicates the country within the United Kingdom in which the postcode is located. The UK is divided into several postcode areas, some of which span across different countries. | Name of the country         | England, Scotland, Wales, or Northern Ireland |
 | **Area Code**    | The initial one or two letters in the Outward Code. Represents a geographic area, usually a city or a major town. | One or two letters          | `SW` (from `SW1V 2AB`) |
-| **District**     | Part of the Outward Code. Indicates a specific area within the Area, encompassing a group of addresses or a major delivery point. | One or two digits following the Area Code. | `1V` (from `SW1V 2AB`) this is provided as `SW1V`|
-| **Postal Sector**| The first number in the Inward Code, representing a subdivision of the District for more precise mail sorting. | One digits following the District Code                | `2` (from `SW1V 2AB`) this is provided as `SW1V 2`|
+| **Area**    | The name of the area corresponding to the Area Code. | South Western (London)  | set of characters          | `South West London`|
+| **District Code**     | Part of the Outward Code. Indicates a specific area within the Area, encompassing a group of addresses or a major delivery point. | One or two digits following the Area Code. | `1V` (from `SW1V 2AB`) this is provided as `SW1V`|
+| **District**     | The name of the district corresponding to the District Code. | Pimlico |set of characters. | `Pimlico`|
+| **Post Sector**| The first number in the Inward Code, representing a subdivision of the District for more precise mail sorting. | One digits following the District Code                | `2` (from `SW1V 2AB`) this is provided as `SW1V 2`|
 
 This markdown file is structured to provide clear and organized information about the UK postcode system. Feel free to modify or expand it as needed for your specific project or make any additions.
