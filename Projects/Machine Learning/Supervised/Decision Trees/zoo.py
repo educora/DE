@@ -17,8 +17,8 @@ import warnings
 import sklearn.exceptions
 
 
-df_zoo = pd.read_csv("C:\\temp\\data\\zoo\\zoo.csv")
-df_class = pd.read_csv("C:\\temp\\data\\zoo\\class.csv")
+df_zoo = pd.read_csv("zoo.csv")
+df_class = pd.read_csv("class.csv")
 
 df_all = df_zoo.merge(df_class,how='left',left_on='class_type',right_on='Class_Number')
 # df_all.head()
@@ -119,7 +119,6 @@ ft_imp3 = pd.concat([ft,imp3],axis=1).reindex(ft.index)
 ft_imp3.columns = ['Feature', 'Importance']
 ft_imp3.sort_values(by='Importance',ascending=False)
 
-
 # Model 4
 # If the dataset were larger, reducing the depth size of the tree would be useful to minimize memory required to perform the analysis. Below I've limited it to two still using the same train/test groups and visible features group as above.
 clf4= DecisionTreeClassifier(max_depth=2).fit(X_train, y_train)
@@ -136,7 +135,6 @@ imp4= pd.DataFrame(clf4.feature_importances_)
 ft_imp4 = pd.concat([ft,imp3],axis=1).reindex(ft.index)
 ft_imp4.columns = ['Feature', 'Importance']
 ft_imp4.sort_values(by='Importance',ascending=False)
-
 
 columns = ['Model','Test %', 'Accuracy','Precision','Recall','F1','Train N']
 df_ = pd.DataFrame(columns=columns)
