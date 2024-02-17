@@ -36,7 +36,7 @@ df_all = df_zoo.merge(df_class,how='left',left_on='class_type',right_on='Class_N
 gr = df_all
 df_all.head()
 
-columns = ['Class_Number','Number_Of_Animal_Species_In_Class','class_type','animal_name','Animal_Names'] #will handle legs separately since it's not binary
+columns = ['Class_Number','Number_Of_Animal_Species_In_Class','class_type','animal_name','Animal_Names']
 gr.drop(columns, inplace=True, axis=1)
 
 gr = gr.groupby(by='Class_Type').mean()
