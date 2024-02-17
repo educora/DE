@@ -1,3 +1,13 @@
+"""
+The Python script is designed to demonstrate how to implement and evaluate decision tree classifiers 
+using a dataset of animals and their characteristics. It loads the dataset, prepares the data by merging 
+and selecting features, then trains decision tree models with different configurations. 
+
+The script evaluates each model's performance using metrics like accuracy and generates reports to 
+understand the models better. It's structured to provide beginners with insight into machine learning 
+workflows, including data preparation, model training, evaluation, and interpretation of results.
+"""
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
