@@ -1,3 +1,25 @@
+"""
+
+Image Detection using PyTorch
+This script demonstrates the process of using PyTorch for image detection tasks. 
+It includes data preparation, model selection, training, and prediction. 
+Key functionalities include loading pre-trained models, customizing them, 
+training on a dataset, and predicting image classes.
+
+Author: Bilal Ahmed
+Last Modified: 01-Mar-2024
+Version: 2.0
+License: MIT
+
+Requirements:
+- torch
+- torchvision
+- matplotlib
+- PIL
+- numpy
+
+"""
+
 from __future__ import print_function, division
 import torch
 import torch.nn as nn
@@ -13,7 +35,6 @@ import os
 import copy
 
 from PIL import Image
-
 
 class ImageDetection(object):
     torch_models =['AlexNet',
@@ -361,22 +382,22 @@ def predict_image(model, image):
     model.eval()
     out = model(batch_t)
     
-    with open('hymenoptera\\data\\class_labels.txt') as f:
+    with open('datasets\\animals\\hymenoptera\\data\\class_labels.txt') as f:
         labels = [line.strip() for line in f.readlines()]
 
     _, index = torch.max(out, 1)
     percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
 
-    return labels[index[0]].split(",")[1].strip(), percentage[index[0]].item()
+    return labels[index[0]].split(",")[0].strip(), percentage[index[0]].item()
     
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
+    
     cudnn.benchmark = True    
-    project_name = "hymenoptera"    
+    project_name = "hymenoptera"
     plt.ion()   # interactive mode
     # Data augmentation and normalization for training
-    # Just normalization for validation
-    
+    # Just normalization for validation    
     data_transforms = {
         'train': transforms.Compose([
             transforms.RandomResizedCrop(224),
@@ -427,27 +448,26 @@ if __name__ == '__main__':
     model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,num_epochs=25)
     #visualize_model(model_ft, num_images=6)
 
-    torch.save(model_ft,os.path.join(project_name,"model",project_name + "." + "pth"))
+    torch.save(model_ft,os.path.join("datasets","animals",project_name,"data","trainedmodel.pth"))
     
     # save the class labels in a file
     with open(os.path.join(project_name,"data", "class_labels.txt"),"w+") as f:
         for i in range(0,len(class_names)):
             f.write(str(i) + "," + class_names[i] + "\n")
-    """
-
-    # load pretrained model from disk
-    #model_ft = torch.load(os.path.join(project_name,"model",project_name + "." + "pth"))
     
-    # provided an input image, returns the predicted class
-    #p = predict_image(model_ft,"hymenoptera\\data\\val\\ants\\8124241_36b290d372.jpg")
-    #p = predict_image(model_ft,"hymenoptera\\data\\val\\bees\\10870992_eebeeb3a12.jpg")
-    #print(p)
-    #print(dir(models))
+    # Step 2 - Own trained model
+    # load pretrained model from disk    
+    model_ft = torch.load(os.path.join("datasets","animals",project_name,"data","trainedmodel.pth"))
+    
+    # provided some input images, returns the predicted class   
+    p = predict_image(model_ft,"datasets\\animals\\hymenoptera\\data\\val\\ants\\F.pergan.28(f).jpg")
+    p = predict_image(model_ft,"datasets\\animals\\hymenoptera\\data\\val\\bees\\10870992_eebeeb3a12.jpg")
+    print(p)
 
+    """
+    # Step 3 - Try with pretrained model(s)
     p = ImageDetection("animals\\hymenoptera","animals\\class_labels.txt")
     model = models.resnet18(pretrained=True)
-    x = p.predict(model,"datasets\\animals\\hymenoptera\\data\\val\\ants\\8398478_50ef10c47a.jpg")
-    
+    x = p.predict(model,"datasets\\animals\\hymenoptera\\data\\val\\ants\\8398478_50ef10c47a.jpg")    
     print(x)
     """
-    
