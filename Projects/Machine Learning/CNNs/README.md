@@ -1,4 +1,4 @@
-# Detailed Explanation of PyTorch Code for Image Detection
+# PyTorch Code for Image Detection using Convolutional Neural Networks (CNNs)
 
 This document explains the provided Python script which utilizes PyTorch, a popular deep learning library, for image detection tasks. The script covers the entire process from data preparation, model selection, training, to prediction.
 
