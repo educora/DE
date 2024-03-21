@@ -1,6 +1,12 @@
 # TD Learning
 """
-In this example, the agent explores the grid randomly (random policy) and updates the estimated value of each state based on the TD(0) formula. This approach illustrates how an agent can learn from every single step by bootstrapping (updating its estimate based on other estimates). It shows the basics of TD Learning, where the "temporal difference" refers to the difference between the estimated values of the current state and the next state, adjusted by the received reward. This example can be expanded with more sophisticated policies and learning algorithms to solve more complex reinforcement learning problems.
+In this example, the agent explores the grid randomly (random policy) and updates the 
+estimated value of each state based on the TD(0) formula. This approach illustrates 
+how an agent can learn from every single step by bootstrapping (updating its estimate 
+based on other estimates). It shows the basics of TD Learning, where the "temporal difference" 
+refers to the difference between the estimated values of the current state and the next state, 
+adjusted by the received reward. This example can be expanded with more sophisticated policies 
+and learning algorithms to solve more complex reinforcement learning problems.
 """
 
 import numpy as np
