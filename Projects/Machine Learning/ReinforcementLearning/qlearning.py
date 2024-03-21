@@ -1,5 +1,10 @@
 # Q Learning
-
+"""
+This code sets up a simple RL environment and uses the Q-learning algorithm to teach an agent
+how to navigate through it. The agent learns to maximize its total reward by avoiding obstacles
+and reaching the goal in the fewest steps possible. Through exploration and exploitation, 
+the agent improves its strategy over episodes, as reflected in the updating Q-table values.
+"""
 import numpy as np
 
 # Environment setup
