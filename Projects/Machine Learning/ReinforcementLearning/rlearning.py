@@ -1,5 +1,10 @@
 # R Learning
-
+"""
+This script is a basic outline and does not include exploration mechanisms like 
+ε-greedy or advanced features of R-learning. Implementing R-learning in real-world 
+scenarios or more complex environments would require additional considerations for 
+state and action space definitions, transition dynamics, and reward structures.
+"""
 import numpy as np
 
 # Initialize parameters
